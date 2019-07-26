@@ -9,36 +9,57 @@ button{ --cursor: text }
     top: 0; left: 0;
     pointer-events: none;
 
+    z-index: 999;
+
     &[setup='true']{
         ._cursor-point{ width: 5px; height: 5px; }
-        ._cursor-cover{ width: 30px; height: 30px; animation: cover_resize_big .35s ease forwards; }
+        &[cursor='pointer'] ._cursor-cover{
+            -webkit-animation: cover_resize_big .35s ease forwards;
+            animation: cover_resize_big .35s ease forwards;
+        }
+
+        ._cursor-cover{
+            -webkit-animation: cover_resize .35s ease forwards;
+            animation: cover_resize .35s ease forwards;
+        }
+
         &[cursor='pointer']
-            {._cursor-point{ animation: pointer_resize .35s ease forwards; }}
+            {._cursor-point{
+                -webkit-animation: pointer_resize .35s ease forwards;
+                animation: pointer_resize .35s ease forwards;
+            }}
         &[cursor='text']
-            {._cursor-point{ width: 2px; height: 18px;}._cursor-cover{ width: 40px; height: 40px; }}
+            {._cursor-point{ width: 2px; height: 18px }._cursor-cover{ width: 40px; height: 40px; }}
 
         &[cursor='default']{
+            -webkit-transition: none;
             transition: none;
 
             ._cursor-point{
+                -webkit-transition: .05s ease all;
                 transition: .05s ease all;
-                animation: ponter_resize .15s ease forwards;
+                -webkit-animation: ponter_resize .15s ease forwards;
+                        animation: ponter_resize .15s ease forwards;
             }
             ._cursor-cover{
+                -webkit-transition: .15s ease all;
                 transition: .15s ease all;
-                animation: cover_resize .35s ease forwards;
+                -webkit-animation: cover_resize .35s ease forwards;
+                        animation: cover_resize .35s ease forwards;
             }
         }
     }
 
     &[setup='done']{
         ._cursor-point{
+            -webkit-transition: .05s ease all;
             transition: .05s ease all;
             
             width: 5px;
             height: 5px;
         }
         ._cursor-cover{
+            -webkit-transition: .15s ease all;
             transition: .15s ease all;
             
             width: 30px;
@@ -53,7 +74,9 @@ button{ --cursor: text }
         left: 50%;
         top: 50%;
 
-        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+
+                transform: translate(-50%, -50%);
         background: #222;
 
         &._cursor-cover{
@@ -83,19 +106,35 @@ button{ --cursor: text }
         ._cursor-point{ background: #eee; }
         ._cursor-cover{ background: rgba(#eee, .2); }
     }
+
+    ._cursor-cover[hidden='true']{ width: 0 !important; height: 0 !important; }
 }
 
 @keyframes ponter_resize{
     0%{ width: 0px; height: 0px; }
     100%{ width: 5px; height: 5px; }
 }
+    @-webkit-keyframes ponter_resize{
+        0%{ width: 0px; height: 0px; }
+        100%{ width: 5px; height: 5px; }
+    }
 @keyframes cover_resize{
     0%{ width: 0px; height: 0px; }
     60%{ width: 35px; height: 35px; }
     100%{ width: 30px; height: 30px; }
 }
+    @-webkit-keyframes cover_resize{
+        0%{ width: 0px; height: 0px; }
+        60%{ width: 35px; height: 35px; }
+        100%{ width: 30px; height: 30px; }
+    }
 @keyframes cover_resize_big{
     0%{ width: 0px; height: 0px; }
     60%{ width: 45px; height: 45px; }
     100%{ width: 40px; height: 40px; }
 }
+    @-webkit-keyframes cover_resize_big{
+        0%{ width: 0px; height: 0px; }
+        60%{ width: 45px; height: 45px; }
+        100%{ width: 40px; height: 40px; }
+    }

@@ -16,6 +16,7 @@ button {
   top: 0;
   left: 0;
   pointer-events: none;
+  z-index: 999;
 }
 
 ._cursor-box[setup='true'] ._cursor-point {
@@ -23,13 +24,18 @@ button {
   height: 5px;
 }
 
-._cursor-box[setup='true'] ._cursor-cover {
-  width: 30px;
-  height: 30px;
+._cursor-box[setup='true'][cursor='pointer'] ._cursor-cover {
+  -webkit-animation: cover_resize_big .35s ease forwards;
   animation: cover_resize_big .35s ease forwards;
 }
 
+._cursor-box[setup='true'] ._cursor-cover {
+  -webkit-animation: cover_resize .35s ease forwards;
+  animation: cover_resize .35s ease forwards;
+}
+
 ._cursor-box[setup='true'][cursor='pointer'] ._cursor-point {
+  -webkit-animation: pointer_resize .35s ease forwards;
   animation: pointer_resize .35s ease forwards;
 }
 
@@ -44,26 +50,33 @@ button {
 }
 
 ._cursor-box[setup='true'][cursor='default'] {
+  -webkit-transition: none;
   transition: none;
 }
 
 ._cursor-box[setup='true'][cursor='default'] ._cursor-point {
+  -webkit-transition: .05s ease all;
   transition: .05s ease all;
+  -webkit-animation: ponter_resize .15s ease forwards;
   animation: ponter_resize .15s ease forwards;
 }
 
 ._cursor-box[setup='true'][cursor='default'] ._cursor-cover {
+  -webkit-transition: .15s ease all;
   transition: .15s ease all;
+  -webkit-animation: cover_resize .35s ease forwards;
   animation: cover_resize .35s ease forwards;
 }
 
 ._cursor-box[setup='done'] ._cursor-point {
+  -webkit-transition: .05s ease all;
   transition: .05s ease all;
   width: 5px;
   height: 5px;
 }
 
 ._cursor-box[setup='done'] ._cursor-cover {
+  -webkit-transition: .15s ease all;
   transition: .15s ease all;
   width: 30px;
   height: 30px;
@@ -75,6 +88,7 @@ button {
   border-radius: 50%;
   left: 50%;
   top: 50%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background: #222;
 }
@@ -125,7 +139,23 @@ button {
   background: rgba(238, 238, 238, 0.2);
 }
 
+._cursor-box ._cursor-cover[hidden='true'] {
+  width: 0 !important;
+  height: 0 !important;
+}
+
 @keyframes ponter_resize {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  100% {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@-webkit-keyframes ponter_resize {
   0% {
     width: 0px;
     height: 0px;
@@ -151,7 +181,37 @@ button {
   }
 }
 
+@-webkit-keyframes cover_resize {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  60% {
+    width: 35px;
+    height: 35px;
+  }
+  100% {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 @keyframes cover_resize_big {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  60% {
+    width: 45px;
+    height: 45px;
+  }
+  100% {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@-webkit-keyframes cover_resize_big {
   0% {
     width: 0px;
     height: 0px;
