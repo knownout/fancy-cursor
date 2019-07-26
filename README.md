@@ -15,3 +15,5 @@ window.addEventListener('load', () => {
 });
 ```
 Cursor element has a z-index value of 999, so do not create elements with a higher z-index. Or simply change this value in the style sheet of the cursor.
+
+Demo: https://re-knownout.github.io/fancy-cursor/
