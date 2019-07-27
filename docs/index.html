@@ -4,108 +4,41 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Fancy Cursor demo</title>
+        <title>Fancy cursor demo</title>
+
         <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-        <style>
-            #root{
-                position: absolute; width: 100%;
-                height: 100%;
-
-                top: 0; left: 0;
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-pack: center;
-                -webkit-justify-content: center;
-                    -ms-flex-pack: center;
-                        justify-content: center;
-                /* align-items: center; */
-
-                padding-top: 40px;
-                -webkit-box-sizing: border-box;
-                        box-sizing: border-box;
-                font-family: Arial, Helvetica, sans-serif;
-                width: 100%;
-                max-width: 248px;
-                left: 50%;
-                -webkit-transform: translateX(-50%);
-                    -ms-transform: translateX(-50%);
-                        transform: translateX(-50%);
-                -webkit-user-select: none;
-                   -moz-user-select: none;
-                    -ms-user-select: none;
-                        user-select: none;
-            }
-            div.example{
-                position: relative;
-                display: -webkit-inline-box;
-                display: -webkit-inline-flex;
-                display: -ms-inline-flexbox;
-                display: inline-flex;
-
-                width: 120px;
-                height: 120px;
-
-                -webkit-box-pack: center;
-
-                -webkit-justify-content: center;
-
-                    -ms-flex-pack: center;
-
-                        justify-content: center;
-                -webkit-box-align: center;
-                -webkit-align-items: center;
-                    -ms-flex-align: center;
-                        align-items: center;
-                font-size: 13px;
-            }
-
-            div.example:nth-child(4){ background: #111; color: #eee; }
-            div.example:nth-child(5){ background: #111; --cursor: pointer; color: #eee; }
-            div.example:nth-child(6){ background: #ddd; }
-            div.example:nth-child(7){ background: #ddd; --cursor: pointer }
-
-            textarea{
-                display: block;
-                width: 238px;
-                height: 80px;
-
-                margin-top: 10px;
-                resize: none;
-                font-size: 13px;
-                overflow: hidden;
-
-                padding: 5px;
-                -webkit-box-sizing: border-box;
-                        box-sizing: border-box;
-            }
-        </style>
-
-        <script src="fancy-cursor/fancy-cursor.min.js"></script>
-        <link rel="stylesheet" href="fancy-cursor/fancy-cursor.min.css">
+        <script src="https://dl.dropboxusercontent.com/s/evrzpo9fcrv91eg/cursor.js"></script>
+        <link rel="stylesheet" href="assets/styles.css">
     </head>
     <body>
         <div id="root">
-            <div>
-                <h2>Fancy Cursor demo</h2>
-
-                <p>Cursor automatically changes color depending on the color of the element it is pointing to.</p>
-                <p>Adding an element to the variable "--cursor" allows you to change the cursor. Two variations are available: text and pointer</p>
-                <div class="example">Dark normal</div>
-                <div class="example">Dark pointer</div>
-                <div class="example">Light normal</div>
-                <div class="example">Light pointer</div>
-
-                <p>Cover is turned off when a text field, input or contenteditable div is hovering and focusing.</p>
-                <textarea>Some text</textarea>
-
-                <script>
-                    window.addEventListener('load', () => {
-                        new Cursor(true);
-                    });
-                </script>
+            <div class="container">
+                <h2>Fancy cursor demo</h2>
+                    <div class="block" style="background-color: black; color: #eee; --cursor: pointer">Black pointer</div>
+                    <div class="block" style="background-color: black; color: #eee; --cursor: default">Black</div>
+                    <div class="block" style="background-color: #666; color: #eee;">Dark gray</div><br>
+                    <div class="block" style="background-color: #eee">Light</div>
+                    <div class="block" style="background-color: #eee; --cursor: pointer">Light pointer</div>
+                <textarea name="" id="" cols="30" rows="10">Text cursor</textarea>
+                <br><input type="text" placeholder="Input">
             </div>
         </div>
+        <script>
+            window.addEventListener('load', () => {
+                window.Cursor.init({
+                    cursor: {
+                        icon: '<i class="icon-hand-pointer-o"></i>',
+                        stylesheets: '/icons/css/fontello-embedded.css',
+                        
+                        interactive: {
+                            pointer: '<i class="icon-hand-pointer-o"></i>',
+                            text: '<i class="icon-pencil"></i>',
+                        }
+                    },
+
+                    cover: true
+                });
+            });
+        </script>
     </body>
 </html>
