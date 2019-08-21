@@ -1,0 +1,24 @@
+{
+  "name": "fancy-cursor",
+  "version": "0.8.1",
+  "description": "Custom animated cursor for websites",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/re-knownout/fancy-cursor.git"
+  },
+  "keywords": [
+    "js",
+    "cursor",
+    "web"
+  ],
+  "author": "knownOut",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/re-knownout/fancy-cursor/issues"
+  },
+  "homepage": "https://github.com/re-knownout/fancy-cursor#readme"
+}

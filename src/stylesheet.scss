@@ -1,0 +1,68 @@
+* { cursor: none; }
+
+// Variables definition
+
+div._f-cursor._container {
+    // Light theme colors
+        // Elements size params
+            // Cursor size
+        --cursor-size: 4px;
+        --cursor-active-size: 4px;
+            // Backlight size
+        --backlight-size: 30px;
+        --backlight-active-size: 40px;
+
+        // Animation params
+        --cursor-animation-time: .01s;
+        --backlight-animation-time: .12s;
+        
+        // Color scheme params
+            // Cursor colors
+        --cursor-color: #000;
+        --cursor-active-color: #000;
+
+            // Backlight colors
+        --backlight-color: rgba(0, 0, 0, .12);
+        --backlight-active-color: rgba(0, 0, 0, .12);
+}
+
+// Element styles
+
+div._f-cursor._container {
+    position: fixed;
+    display: block;
+
+    width: var(--backlight-size);
+    height: var(--backlight-size);
+
+    div._f-cursor._backlight, div._f-cursor._cursor {
+        position: absolute; display: block;
+        border-radius: 50%;
+
+        pointer-events: none;
+        transform: scale(0, 0);
+    }
+
+    div._f-cursor._backlight {
+        width: var(--backlight-size); height: var(--backlight-size);
+        background: var(--backlight-color);
+
+        * { background-color: var(--cursor-color); color: var(--cursor-color); }
+    }
+
+    div._f-cursor._cursor {
+        width: var(--cursor-size); height: var(--cursor-size);
+        background: var(--cursor-color);
+
+        * { background-color: var(--cursor-color); color: var(--cursor-color); }
+    }
+
+    &[animate = "true"] {
+        div._f-cursor._backlight { transition: var(--backlight-animation-time) ease all; }
+        div._f-cursor._cursor { transition: var(--cursor-animation-time) ease all; }
+    }
+
+    // &[show = "true"] {
+    //     div._f-cursor._backlight, div._f-cursor._cursor { opacity: 1; }
+    // }
+}
